@@ -163,9 +163,13 @@ public class CartesianVectorSpace : MonoBehaviour, ICanvas
         }
     }
 
-    public void DrawVector(Vector vector, bool isAnimated = true, bool isLocal = true)
+    public void DrawVector(Vector vector, Color c, bool isAnimated = true, bool isLocal = true)
     {
         RectTransform r = Instantiate(vectorPrefab, transform).GetComponent<RectTransform>();
+        foreach (Image i in r.GetComponentsInChildren<Image>())
+        {
+            i.color = c;
+        }
         vectorBodies[vector] = r;
         Vector2 tVector = Vector2.zero;
         if (isLocal)
@@ -222,6 +226,11 @@ public class CartesianVectorSpace : MonoBehaviour, ICanvas
     }
 
     public void DrawText(string text, Rect position, float fontsize = 12)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void Destroy()
     {
         throw new System.NotImplementedException();
     }
